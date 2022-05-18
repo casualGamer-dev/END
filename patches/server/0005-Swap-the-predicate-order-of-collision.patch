@@ -17,7 +17,7 @@ index 570a9f1a3387ac42a3c935519aa1656f9d016504..5c4eb430ee8ec433ceebbb8c1c8ef9ae
      public void push(Entity entity) {
 -        if (!this.isPassengerOfSameVehicle(entity)) {
 -            if (!entity.noPhysics && !this.noPhysics) {
-+        if (!entity.noPhysics && !this.noPhysics && !this.isPassengerOfSameVehicle(entity)) { // Pearl - Swap the predicate order of collision
++        if (!entity.noPhysics && !this.noPhysics && !this.isPassengerOfSameVehicle(entity)) { // End - Swap the predicate order of collision
                  if (this.level.paperConfig.onlyPlayersCollide && !(entity instanceof ServerPlayer || this instanceof ServerPlayer)) return; // Paper
                  double d0 = entity.getX() - this.getX();
                  double d1 = entity.getZ() - this.getZ();

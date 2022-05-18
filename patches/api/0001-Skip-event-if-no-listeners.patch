@@ -14,13 +14,13 @@ index dba9041784e7d3051b5248cbc24e4879e60103c1..6e464d93bd6f60dd511d1bc33d344ffc
       */
      @Override
      public void callEvent(@NotNull Event event) {
-+        // Pearl start
++        // End start
 +        HandlerList handlers = event.getHandlers();
 +        RegisteredListener[] listeners = handlers.getRegisteredListeners();
 +        if (listeners.length == 0) {
 +            return;
 +        }
-+        // Pearl end
++        // End end
 +
          // Paper - replace callEvent by merging to below method
          if (event.isAsynchronous() && server.isPrimaryThread()) {
