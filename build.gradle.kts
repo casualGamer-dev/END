@@ -51,7 +51,7 @@ subprojects {
 }
 
 paperweight {
-    serverProject.set(project(":pearl-server"))
+    serverProject.set(project(":cave-server"))
 
     remapRepo.set("https://maven.fabricmc.net/")
     decompileRepo.set("https://files.minecraftforge.net/maven/")
