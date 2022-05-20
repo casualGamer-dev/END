@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Pearl bug report
+about: Cave bug report
 title: ''
 labels: bug
 assignees: ''
@@ -19,7 +19,7 @@ A clear and concise description of what you expected to happen.
 **Screenshots**
 If applicable, add screenshots to help explain your problem. 
 
-**Pearl version**
+**Cave version**
 The output of `/version` command
 
 **Plugins**

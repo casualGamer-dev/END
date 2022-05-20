@@ -6,11 +6,11 @@ Subject: [PATCH] Fix stuck in portals
 Original code by PurpurMC, licensed under MIT License
 You can find the original code on https://github.com/PurpurMC/Purpur
 
-diff --git a/src/main/java/me/minhh2792/pearl/PearlConfig.java b/src/main/java/me/minhh2792/pearl/PearlConfig.java
+diff --git a/src/main/java/me/minhh2792/pearl/CaveConfig.java b/src/main/java/me/minhh2792/pearl/CaveConfig.java
 index 13d5fe7411a709b33dde8ff9a8f6e7006f92708a..ebbf7b631309e80300f991426c50deef7f7a12aa 100644
---- a/src/main/java/me/minhh2792/pearl/PearlConfig.java
-+++ b/src/main/java/me/minhh2792/pearl/PearlConfig.java
-@@ -210,4 +210,9 @@ public class PearlConfig {
+--- a/src/main/java/me/minhh2792/pearl/CaveConfig.java
++++ b/src/main/java/me/minhh2792/pearl/CaveConfig.java
+@@ -210,4 +210,9 @@ public class CaveConfig {
  		org.bukkit.event.inventory.InventoryType.ENDER_CHEST.setDefaultSize(enderChestSixRows ? 54 : 27);
  		enderChestPermissionRows = getBoolean("blocks.ender_chest.use-permissions-for-rows", enderChestPermissionRows);
  	}
@@ -43,7 +43,7 @@ index 237e16dcb06f8421467080d7c383207fbf99a454..88c6edd1550239ba567b7d8520b25897
 +    public BlockPos portalPos = BlockPos.ZERO; // Purpur
      public void handleInsidePortal(BlockPos pos) {
          if (this.isOnPortalCooldown()) {
-+            if (!(me.minhh2792.pearl.PearlConfig.playerFixStuckInPortal && this instanceof Player && !pos.equals(portalPos))) // Purpur
++            if (!(me.toivi.cavecraft.CaveConfig.playerFixStuckInPortal && this instanceof Player && !pos.equals(portalPos))) // Purpur
              this.setPortalCooldown();
          } else {
              if (!this.level.isClientSide && !pos.equals(this.portalEntrancePos)) {

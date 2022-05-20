@@ -6,11 +6,11 @@ Subject: [PATCH] Entities can use portals configuration
 Original code by PurpurMC, licensed under MIT License
 You can find the original code on https://github.com/PurpurMC/Purpur
 
-diff --git a/src/main/java/me/minhh2792/pearl/PearlConfig.java b/src/main/java/me/minhh2792/pearl/PearlConfig.java
+diff --git a/src/main/java/me/minhh2792/pearl/CaveConfig.java b/src/main/java/me/minhh2792/pearl/CaveConfig.java
 index ebbf7b631309e80300f991426c50deef7f7a12aa..da2f7c5f083248206b476230c30e7049e267dd9c 100644
---- a/src/main/java/me/minhh2792/pearl/PearlConfig.java
-+++ b/src/main/java/me/minhh2792/pearl/PearlConfig.java
-@@ -215,4 +215,9 @@ public class PearlConfig {
+--- a/src/main/java/me/minhh2792/pearl/CaveConfig.java
++++ b/src/main/java/me/minhh2792/pearl/CaveConfig.java
+@@ -215,4 +215,9 @@ public class CaveConfig {
  	private static void playerFixStuckInPortal() {
  		playerFixStuckInPortal = getBoolean("gameplay-mechanics.player.fix-stuck-in-portal", false);
  	}
@@ -26,10 +26,10 @@ index 88c6edd1550239ba567b7d8520b25897d5fe9e1d..28b95d0463b61a8148990d5fbaf8fcf3
 +++ b/src/main/java/net/minecraft/world/entity/Entity.java
 @@ -2774,7 +2774,7 @@ public abstract class Entity implements Nameable, EntityAccess, CommandSource {
          if (this.isOnPortalCooldown()) {
-             if (!(me.minhh2792.pearl.PearlConfig.playerFixStuckInPortal && this instanceof Player && !pos.equals(portalPos))) // Purpur
+             if (!(me.toivi.cavecraft.CaveConfig.playerFixStuckInPortal && this instanceof Player && !pos.equals(portalPos))) // Purpur
              this.setPortalCooldown();
 -        } else {
-+        } else if (me.minhh2792.pearl.PearlConfig.entitiesCanUsePortals || this instanceof ServerPlayer) { // Purpur
++        } else if (me.toivi.cavecraft.CaveConfig.entitiesCanUsePortals || this instanceof ServerPlayer) { // Purpur
              if (!this.level.isClientSide && !pos.equals(this.portalEntrancePos)) {
                  this.portalEntrancePos = pos.immutable();
                  portalPos = BlockPos.ZERO; // Purpur
@@ -38,7 +38,7 @@ index 88c6edd1550239ba567b7d8520b25897d5fe9e1d..28b95d0463b61a8148990d5fbaf8fcf3
  
      public boolean canChangeDimensions() {
 -        return isAlive() && valid; // Paper
-+        return isAlive() && valid && (me.minhh2792.pearl.PearlConfig.entitiesCanUsePortals || this instanceof ServerPlayer); // Paper // Purpur
++        return isAlive() && valid && (me.toivi.cavecraft.CaveConfig.entitiesCanUsePortals || this instanceof ServerPlayer); // Paper // Purpur
      }
  
      public float getBlockExplosionResistance(Explosion explosion, BlockGetter world, BlockPos pos, BlockState blockState, FluidState fluidState, float max) {

@@ -6,11 +6,11 @@ Subject: [PATCH] Alternative Keepalive Handling
 Original code by PurpurMC, licensed under MIT License
 You can find the original code on https://github.com/PurpurMC/Purpur
 
-diff --git a/src/main/java/me/minhh2792/pearl/PearlConfig.java b/src/main/java/me/minhh2792/pearl/PearlConfig.java
+diff --git a/src/main/java/me/minhh2792/pearl/CaveConfig.java b/src/main/java/me/minhh2792/pearl/CaveConfig.java
 index ca98bdd7df104bcb0e16438fe9f0ff98d3ae7631..cd480ada49fe3451c56e6c788388ddde705628a9 100644
---- a/src/main/java/me/minhh2792/pearl/PearlConfig.java
-+++ b/src/main/java/me/minhh2792/pearl/PearlConfig.java
-@@ -160,6 +160,9 @@ public class PearlConfig {
+--- a/src/main/java/me/minhh2792/pearl/CaveConfig.java
++++ b/src/main/java/me/minhh2792/pearl/CaveConfig.java
+@@ -160,6 +160,9 @@ public class CaveConfig {
  	private static void mapUpdateInterval() {
  		mapUpdateInterval = getInt("item.map.update-interval", mapUpdateInterval);
  	}
@@ -38,7 +38,7 @@ index 73fbaf40dd0c9dd14bb18009f6c4def629e3b04e..0cf74fccf0d7860627199e5e35c2afe9
          long elapsedTime = currentTime - this.keepAliveTime;
  
 +        // Purpur start
-+        if (me.minhh2792.pearl.PearlConfig.useAlternativeKeepalive) {
++        if (me.toivi.cavecraft.CaveConfig.useAlternativeKeepalive) {
 +            if (elapsedTime >= 1000L) { // 1 second
 +                if (!processedDisconnect && keepAlives.size() > KEEPALIVE_LIMIT) {
 +                    LOGGER.warn("{} was kicked due to keepalive timeout!", player.getName());
@@ -60,7 +60,7 @@ index 73fbaf40dd0c9dd14bb18009f6c4def629e3b04e..0cf74fccf0d7860627199e5e35c2afe9
      @Override
      public void handleKeepAlive(ServerboundKeepAlivePacket packet) {
 +        // Purpur start
-+        if (me.minhh2792.pearl.PearlConfig.useAlternativeKeepalive) {
++        if (me.toivi.cavecraft.CaveConfig.useAlternativeKeepalive) {
 +            long id = packet.getId();
 +            if (keepAlives.size() > 0 && keepAlives.contains(id)) {
 +                int ping = (int) (Util.getMillis() - id);

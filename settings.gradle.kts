@@ -8,7 +8,7 @@ pluginManagement {
 }
 
 rootProject.name = "pearl"
-for (name in listOf("Pearl-API", "Pearl-Server")) {
+for (name in listOf("Cave-API", "Cave-Server")) {
     val projName = name.toLowerCase(Locale.ENGLISH)
     include(projName)
     findProject(":$projName")!!.projectDir = file(name)

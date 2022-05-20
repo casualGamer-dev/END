@@ -18,11 +18,11 @@ index 85c9056f92711b985e251f0f06ed551d03deb562..c540694e24978e9e6119267d4f66df52
      @Deprecated
      public static final PlainComponentSerializer PLAIN_COMPONENT = PlainComponentSerializer.builder().flattener(FLATTENER).build();
      public static final PlainTextComponentSerializer PLAIN = PlainTextComponentSerializer.builder().flattener(FLATTENER).build();
-diff --git a/src/main/java/me/minhh2792/pearl/PearlConfig.java b/src/main/java/me/minhh2792/pearl/PearlConfig.java
+diff --git a/src/main/java/me/minhh2792/pearl/CaveConfig.java b/src/main/java/me/minhh2792/pearl/CaveConfig.java
 index ec17198a782285027b913299d03e3b72f8b6c522..ab7fb90e987c26fd469ab411899d0af4bd241426 100644
---- a/src/main/java/me/minhh2792/pearl/PearlConfig.java
-+++ b/src/main/java/me/minhh2792/pearl/PearlConfig.java
-@@ -177,7 +177,9 @@ public class PearlConfig {
+--- a/src/main/java/me/minhh2792/pearl/CaveConfig.java
++++ b/src/main/java/me/minhh2792/pearl/CaveConfig.java
+@@ -177,7 +177,9 @@ public class CaveConfig {
  	}
  
  	public static boolean signRightClickEdit = false;
@@ -40,7 +40,7 @@ index 2f5e40437d1865a874c352999edd084226d4e47b..e4ed998700acee02f456c00b60bca89d
  
      @Override
      public void openTextEdit(SignBlockEntity sign) {
-+        if (me.minhh2792.pearl.PearlConfig.signAllowColors) this.connection.send(sign.getTranslatedUpdatePacket(textFilteringEnabled)); // Purpur
++        if (me.toivi.cavecraft.CaveConfig.signAllowColors) this.connection.send(sign.getTranslatedUpdatePacket(textFilteringEnabled)); // Purpur
          sign.setAllowedPlayerEditor(this.getUUID());
          this.connection.send(new ClientboundBlockUpdatePacket(this.level, sign.getBlockPos()));
          this.connection.send(new ClientboundOpenSignEditorPacket(sign.getBlockPos()));
@@ -58,7 +58,7 @@ index 0cf74fccf0d7860627199e5e35c2afe9a8834fb4..a6563e807e0c1f5f5d76b220ec11f0b0
 -                    lines.add(net.kyori.adventure.text.Component.text(SharedConstants.filterText(currentLine.getRaw())));
 -                }
 +                String line = SharedConstants.filterText(this.player.isTextFilteringEnabled() ? currentLine.getFiltered() : currentLine.getRaw());
-+                if (me.minhh2792.pearl.PearlConfig.signAllowColors) {
++                if (me.toivi.cavecraft.CaveConfig.signAllowColors) {
 +                    if (player.hasPermission("purpur.sign.color")) line = line.replaceAll("(?i)&([0-9a-fr])", "\u00a7$1");
 +                    if (player.hasPermission("purpur.sign.style")) line = line.replaceAll("(?i)&([l-or])", "\u00a7$1");
 +                    if (player.hasPermission("purpur.sign.magic")) line = line.replaceAll("(?i)&([kr])", "\u00a7$1");

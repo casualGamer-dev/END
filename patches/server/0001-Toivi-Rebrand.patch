@@ -1,7 +1,7 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Minh Nguyen <minhh2792.work@gmail.com>
 Date: Mon, 2 May 2022 12:17:47 +0000
-Subject: [PATCH] End Rebrand
+Subject: [PATCH] Cave Rebrand
 
 
 diff --git a/build.gradle.kts b/build.gradle.kts
@@ -13,7 +13,7 @@ index 9521971e9e597834e785b36d1657064dc1621b9b..4a973de1682460d0086e2bda3329eed2
  
  dependencies {
 -    implementation(project(":pufferfish-api")) // Pufferfish // Paper
-+    implementation(project(":end-api")) // End // Pufferfish // Paper
++    implementation(project(":pearl-api")) // Cave // Pufferfish // Paper
      // Pufferfish start
      implementation("io.papermc.paper:paper-mojangapi:1.18.2-R0.1-SNAPSHOT") {
          exclude("io.papermc.paper", "paper-api")
@@ -22,7 +22,7 @@ index 9521971e9e597834e785b36d1657064dc1621b9b..4a973de1682460d0086e2bda3329eed2
              "Main-Class" to "org.bukkit.craftbukkit.Main",
              "Implementation-Title" to "CraftBukkit",
 -            "Implementation-Version" to "git-Pufferfish-$implementationVersion", // Pufferfish
-+            "Implementation-Version" to "git-End-$implementationVersion", // End
++            "Implementation-Version" to "git-Cave-$implementationVersion", // Cave
              "Implementation-Vendor" to date, // Paper
              "Specification-Title" to "Bukkit",
              "Specification-Version" to project.version,
@@ -35,7 +35,7 @@ index f2fe6ea3719ff8b2913b7a3a939d7a5b75cb8b28..3666c57d11209baf61a0f03c66b71f30
              // Only start Metrics, if it's enabled in the config
              if (config.getBoolean("enabled", true)) {
 -                Metrics metrics = new Metrics("Pufferfish", serverUUID, logFailedRequests, Bukkit.getLogger()); // Pufferfish
-+                Metrics metrics = new Metrics("End", serverUUID, logFailedRequests, Bukkit.getLogger()); // End
++                Metrics metrics = new Metrics("Cave", serverUUID, logFailedRequests, Bukkit.getLogger()); // Cave
  
                  metrics.addCustomChart(new Metrics.SimplePie("minecraft_version", () -> {
                      String minecraftVersion = Bukkit.getVersion();
@@ -44,7 +44,7 @@ index f2fe6ea3719ff8b2913b7a3a939d7a5b75cb8b28..3666c57d11209baf61a0f03c66b71f30
                  metrics.addCustomChart(new Metrics.SingleLineChart("players", () -> Bukkit.getOnlinePlayers().size()));
                  metrics.addCustomChart(new Metrics.SimplePie("online_mode", () -> Bukkit.getOnlineMode() ? "online" : "offline"));
 -                metrics.addCustomChart(new Metrics.SimplePie("pufferfish_version", () -> (Metrics.class.getPackage().getImplementationVersion() != null) ? Metrics.class.getPackage().getImplementationVersion() : "unknown"));
-+                metrics.addCustomChart(new Metrics.SimplePie("end_version", () -> (Metrics.class.getPackage().getImplementationVersion() != null) ? Metrics.class.getPackage().getImplementationVersion() : "unknown"));
++                metrics.addCustomChart(new Metrics.SimplePie("pearl_version", () -> (Metrics.class.getPackage().getImplementationVersion() != null) ? Metrics.class.getPackage().getImplementationVersion() : "unknown"));
  
                  metrics.addCustomChart(new Metrics.DrilldownPie("java_version", () -> {
                      Map<String, Map<String, Integer>> map = new HashMap<>();
@@ -57,17 +57,17 @@ index e0b1f0671d16ddddcb6725acd25a1d1d69e42701..b2b1835a5646310fdc0aa73da0c4741e
      protected LineReader buildReader(LineReaderBuilder builder) {
          builder
 -                .appName("Paper")
-+                .appName("End")
++                .appName("Cave")
                  .variable(LineReader.HISTORY_FILE, java.nio.file.Paths.get(".console_history"))
                  .completer(new ConsoleCommandCompleter(this.server))
                  .option(LineReader.Option.COMPLETE_IN_WORD, true);
-diff --git a/src/main/java/me/minhh2792/end/EndVersionFetcher.java b/src/main/java/me/minhh2792/end/EndVersionFetcher.java
+diff --git a/src/main/java/me/minhh2792/pearl/CaveVersionFetcher.java b/src/main/java/me/minhh2792/pearl/CaveVersionFetcher.java
 new file mode 100644
 index 0000000000000000000000000000000000000000..da88a794ffabc78209aad1b0d91cf5ba025f8d14
 --- /dev/null
-+++ b/src/main/java/me/minhh2792/end/EndVersionFetcher.java
++++ b/src/main/java/me/minhh2792/pearl/CaveVersionFetcher.java
 @@ -0,0 +1,120 @@
-+package me.toivi.end;
++package me.toivi.cavecraft;
 +
 +import com.destroystokyo.paper.VersionHistoryManager;
 +import com.destroystokyo.paper.util.VersionFetcher;
@@ -85,10 +85,10 @@ index 0000000000000000000000000000000000000000..da88a794ffabc78209aad1b0d91cf5ba
 +import java.net.HttpURLConnection;
 +import java.net.URL;
 +
-+public class EndVersionFetcher implements VersionFetcher {
++public class CaveVersionFetcher implements VersionFetcher {
 +    private static final java.util.regex.Pattern VER_PATTERN = java.util.regex.Pattern.compile("^([0-9\\.]*)\\-.*R"); // R is an anchor, will always give '-R' at end
 +    private static final String GITHUB_BRANCH_NAME = "main";
-+    private static final String DOWNLOAD_PAGE = "https://github.com/End-Project/End/releases";
++    private static final String DOWNLOAD_PAGE = "https://github.com/Cave-Project/Cave/releases";
 +    private static @Nullable String mcVer;
 +
 +    @Override
@@ -99,8 +99,8 @@ index 0000000000000000000000000000000000000000..da88a794ffabc78209aad1b0d91cf5ba
 +    @Nonnull
 +    @Override
 +    public Component getVersionMessage(@Nonnull String serverVersion) {
-+        String[] parts = serverVersion.substring("git-End-".length()).split("[-\\s]");
-+        final Component updateMessage = getUpdateStatusMessage("End-Project/End", GITHUB_BRANCH_NAME, parts[0]);
++        String[] parts = serverVersion.substring("git-Cave-".length()).split("[-\\s]");
++        final Component updateMessage = getUpdateStatusMessage("Cave-Project/Cave", GITHUB_BRANCH_NAME, parts[0]);
 +        final Component history = getHistory();
 +
 +        return history != null ? TextComponent.ofChildren(updateMessage, Component.newline(), history) : updateMessage;
@@ -113,7 +113,7 @@ index 0000000000000000000000000000000000000000..da88a794ffabc78209aad1b0d91cf5ba
 +                String result = matcher.group();
 +                mcVer = result.substring(0, result.length() - 2); // strip 'R' anchor and trailing '-'
 +            } else {
-+                org.bukkit.Bukkit.getLogger().warning("Unable to match version to pattern! Report to End!");
++                org.bukkit.Bukkit.getLogger().warning("Unable to match version to pattern! Report to Cave!");
 +                org.bukkit.Bukkit.getLogger().warning("Pattern: " + VER_PATTERN.toString());
 +                org.bukkit.Bukkit.getLogger().warning("Version: " + org.bukkit.Bukkit.getBukkitVersion());
 +            }
@@ -205,7 +205,7 @@ index 371b0f95b23d67c9913875a3dd7888e722551f18..9f5070df29f31b95c21b433dad91565a
      @DontObfuscate
      public String getServerModName() {
 -        return "Pufferfish"; // Pufferfish - Pufferfish > // Paper - Paper > // Spigot - Spigot > // CraftBukkit - cb > vanilla!
-+        return "End"; // End - End > // Pufferfish - Pufferfish > // Paper - Paper > // Spigot - Spigot > // CraftBukkit - cb > vanilla!
++        return "Cave"; // Cave - Cave > // Pufferfish - Pufferfish > // Paper - Paper > // Spigot - Spigot > // CraftBukkit - cb > vanilla!
      }
  
      public SystemReport fillSystemReport(SystemReport details) {
@@ -231,7 +231,7 @@ index f4a82b1f2dc26f938d3dcb23ec32f135a1bfd163..72c07366e13b40d56ef3e81cf05b78a5
  
  public final class CraftServer implements Server {
 -    private final String serverName = "Pufferfish"; // Paper // Pufferfish
-+    private final String serverName = "End"; // Paper // Pufferfish // End
++    private final String serverName = "Cave"; // Paper // Pufferfish // Cave
      private final String serverVersion;
      private final String bukkitVersion = Versioning.getBukkitVersion();
      private final Logger logger = Logger.getLogger("Minecraft");
@@ -244,7 +244,7 @@ index c022751e3b45469cc0ad6732e2d6ff08918bafa4..5d00a6a6c077b82644996037c4cfd9ad
          }
  
 -        throw new UnsupportedOperationException("Unsupported monster type: " + type + ". This is a bug, report this to Spigot.");
-+        throw new UnsupportedOperationException("Unsupported monster type: " + type + ". This is a bug, report this to End.");
++        throw new UnsupportedOperationException("Unsupported monster type: " + type + ". This is a bug, report this to Cave.");
      }
  
      @Override
@@ -257,7 +257,7 @@ index cdefb2025eedea7e204d70d568adaf1c1ec4c03c..1fa82e34f61a573524f9ec380e4268e6
              } else {
                  //this.debugTail = this.debugTail.setNext(new CraftAsyncDebugger(currentTick + CraftScheduler.RECENT_TICKS, task.getOwner(), task.getTaskClass())); // Paper
 -                task.getOwner().getLogger().log(Level.SEVERE, "Unexpected Async Task in the Sync Scheduler. Report this to Paper"); // Paper
-+                task.getOwner().getLogger().log(Level.SEVERE, "Unexpected Async Task in the Sync Scheduler. Report this to End"); // Paper / End
++                task.getOwner().getLogger().log(Level.SEVERE, "Unexpected Async Task in the Sync Scheduler. Report this to Cave"); // Paper / Cave
                  // We don't need to parse pending
                  // (async tasks must live with race-conditions if they attempt to cancel between these few lines of code)
              }
@@ -270,7 +270,7 @@ index 7e06f263cf618b82f77101ef86d819d5dc37a24e..5a60f28fde279887f09fb18391afb4c4
      @Override
      public com.destroystokyo.paper.util.VersionFetcher getVersionFetcher() {
 -        return new gg.pufferfish.pufferfish.PufferfishVersionFetcher(); // Pufferfish
-+        return new me.toivi.end.EndVersionFetcher(); // End
++        return new me.toivi.cavecraft.CaveVersionFetcher(); // Cave
      }
  
      @Override
@@ -283,7 +283,7 @@ index 80553face9c70c2a3d897681e7761df85b22d464..911b9291927cf492cef2b0dc6bf37b5e
          String result = "Unknown-Version";
  
 -        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/gg.pufferfish.pufferfish/pufferfish-api/pom.properties"); // Pufferfish
-+        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/me.toivi.end/end-api/pom.properties"); // Pufferfish // End
++        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/me.toivi.cavecraft/pearl-api/pom.properties"); // Pufferfish // Cave
          Properties properties = new Properties();
  
          if (stream != null) {
@@ -305,16 +305,16 @@ index 24fefa521093448e608e217af7b88a6397a4b054..9e4669268cd76a7dbd1aefbfacc7f232
                  // Paper end
                  log.log( Level.SEVERE, "------------------------------" );
 -                log.log( Level.SEVERE, "The server has stopped responding! This is (probably) not a Paper bug." ); // Paper
-+                log.log( Level.SEVERE, "The server has stopped responding! This is (probably) not a End bug." ); // Paper // End
++                log.log( Level.SEVERE, "The server has stopped responding! This is (probably) not a Cave bug." ); // Paper // Cave
                  log.log( Level.SEVERE, "If you see a plugin in the Server thread dump below, then please report it to that author" );
                  log.log( Level.SEVERE, "\t *Especially* if it looks like HTTP or MySQL operations are occurring" );
                  log.log( Level.SEVERE, "If you see a world save or edit, then it means you did far more than your server can handle at once" );
                  log.log( Level.SEVERE, "\t If this is the case, consider increasing timeout-time in spigot.yml but note that this will replace the crash with LARGE lag spikes" );
 -                log.log( Level.SEVERE, "If you are unsure or still think this is a Paper bug, please report this to https://github.com/PaperMC/Paper/issues" );
-+                log.log( Level.SEVERE, "If you are unsure or still think this is a End bug, please report this to https://github.com/End-Project/End/issues" );
++                log.log( Level.SEVERE, "If you are unsure or still think this is a Cave bug, please report this to https://github.com/Cave-Project/Cave/issues" );
                  log.log( Level.SEVERE, "Be sure to include ALL relevant console errors and Minecraft crash reports" );
 -                log.log( Level.SEVERE, "Paper version: " + Bukkit.getServer().getVersion() );
-+                log.log( Level.SEVERE, "End version: " + Bukkit.getServer().getVersion() );
++                log.log( Level.SEVERE, "Cave version: " + Bukkit.getServer().getVersion() );
                  //
                  if ( net.minecraft.world.level.Level.lastPhysicsProblem != null )
                  {
@@ -329,7 +329,7 @@ index 24fefa521093448e608e217af7b88a6397a4b054..9e4669268cd76a7dbd1aefbfacc7f232
                  // Paper end - Different message for short timeout
                  log.log( Level.SEVERE, "------------------------------" );
 -                log.log( Level.SEVERE, "Server thread dump (Look for plugins here before reporting to Paper!):" ); // Paper
-+                log.log( Level.SEVERE, "Server thread dump (Look for plugins here before reporting to PEARL!):" ); // Paper // End
++                log.log( Level.SEVERE, "Server thread dump (Look for plugins here before reporting to PEARL!):" ); // Paper // Cave
                  com.destroystokyo.paper.io.chunk.ChunkTaskManager.dumpAllChunkLoadInfo(); // Paper
                  this.dumpTickingInfo(); // Paper - log detailed tick information
                  WatchdogThread.dumpThread( ManagementFactory.getThreadMXBean().getThreadInfo( server.serverThread.getId(), Integer.MAX_VALUE ), log );

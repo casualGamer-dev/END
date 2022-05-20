@@ -67,8 +67,8 @@ paperweight {
             apiPatchDir.set(layout.projectDirectory.dir("patches/api"))
             serverPatchDir.set(layout.projectDirectory.dir("patches/server"))
 
-            apiOutputDir.set(layout.projectDirectory.dir("Pearl-API"))
-            serverOutputDir.set(layout.projectDirectory.dir("Pearl-Server"))
+            apiOutputDir.set(layout.projectDirectory.dir("Cave-API"))
+            serverOutputDir.set(layout.projectDirectory.dir("Cave-Server"))
         }
     }
 }

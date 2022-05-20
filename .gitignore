@@ -46,7 +46,7 @@ out/
 # other stuff
 run/
 
-Pearl-Server
-Pearl-API
+Cave-Server
+Cave-API
 
 !gradle/wrapper/gradle-wrapper.jar

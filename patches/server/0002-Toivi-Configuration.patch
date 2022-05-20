@@ -1,7 +1,7 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Minh Nguyen <minhh2792.work@gmail.com>
 Date: Tue, 3 May 2022 11:22:23 +0000
-Subject: [PATCH] End Configuration
+Subject: [PATCH] Cave Configuration
 
 
 diff --git a/src/main/java/co/aikar/timings/TimingsExport.java b/src/main/java/co/aikar/timings/TimingsExport.java
@@ -14,17 +14,17 @@ index a5e4467382422df6cff2b9f61f44feabfe7084f3..bd0edc740a863c13003bc3ac7b81276c
              pair("paper", mapAsJSON(Bukkit.spigot().getPaperConfig(), null)), // Pufferfish
 -            pair("pufferfish", mapAsJSON(gg.pufferfish.pufferfish.PufferfishConfig.getConfigCopy(), null)) // Pufferfish
 +            pair("pufferfish", mapAsJSON(gg.pufferfish.pufferfish.PufferfishConfig.getConfigCopy(), null)), // Pufferfish
-+            pair("end", mapAsJSON(me.toivi.end.EndConfig.getConfigCopy(), null)) // End
++            pair("pearl", mapAsJSON(me.toivi.cavecraft.CaveConfig.getConfigCopy(), null)) // Cave
          ));
  
          new TimingsExport(listeners, parent, history).start();
-diff --git a/src/main/java/me/minhh2792/end/EndConfig.java b/src/main/java/me/minhh2792/end/EndConfig.java
+diff --git a/src/main/java/me/minhh2792/pearl/CaveConfig.java b/src/main/java/me/minhh2792/pearl/CaveConfig.java
 new file mode 100644
 index 0000000000000000000000000000000000000000..3befc3e286f46771407b40a20955de1eb7d19572
 --- /dev/null
-+++ b/src/main/java/me/minhh2792/end/EndConfig.java
++++ b/src/main/java/me/minhh2792/pearl/CaveConfig.java
 @@ -0,0 +1,160 @@
-+package me.toivi.end;
++package me.toivi.cavecraft;
 +
 +import org.bukkit.configuration.ConfigurationSection;
 +import org.bukkit.configuration.MemoryConfiguration;
@@ -43,7 +43,7 @@ index 0000000000000000000000000000000000000000..3befc3e286f46771407b40a20955de1e
 +import java.util.concurrent.TimeUnit;
 +import java.util.regex.Pattern;
 +
-+public class EndConfig {
++public class CaveConfig {
 +	
 +	private static final YamlFile config = new YamlFile();
 +	private static int updates = 0;
@@ -69,7 +69,7 @@ index 0000000000000000000000000000000000000000..3befc3e286f46771407b40a20955de1e
 +	}
 +	
 +	public static void load() throws IOException {
-+		File configFile = new File("end.yml");
++		File configFile = new File("pearl.yml");
 +		
 +		if (configFile.exists()) {
 +			try {
@@ -81,11 +81,11 @@ index 0000000000000000000000000000000000000000..3befc3e286f46771407b40a20955de1e
 +		
 +		getInt("info.version", 1);
 +		setComment("info",
-+				"End Configuration",
++				"Cave Configuration",
 +				"More details on some option can be found at https://purpurmc.org/docs/",
 +				"Join our Discord for help and support: https://discord.gg/ZFAtK5Mx9w");
 +		
-+		for (Method method : EndConfig.class.getDeclaredMethods()) {
++		for (Method method : CaveConfig.class.getDeclaredMethods()) {
 +			if (Modifier.isStatic(method.getModifiers()) && Modifier.isPrivate(method.getModifiers()) && method.getParameterCount() == 0 &&
 +					method.getReturnType() == Void.TYPE && !method.getName().startsWith("lambda")) {
 +				method.setAccessible(true);
@@ -192,7 +192,7 @@ index 6afd7c8b3a0db90dbab14b4405ae4c750e5b0ef1..0d4e319e3746d1c2bf57dc53f5d5c5d6
          // Paper end
          gg.pufferfish.pufferfish.PufferfishConfig.load(); // Pufferfish
          gg.pufferfish.pufferfish.PufferfishCommand.init(); // Pufferfish
-+        me.toivi.end.EndConfig.load(); // End
++        me.toivi.cavecraft.CaveConfig.load(); // Cave
  
          this.setPvpAllowed(dedicatedserverproperties.pvp);
          this.setFlightAllowed(dedicatedserverproperties.allowFlight);

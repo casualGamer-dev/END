@@ -18,10 +18,10 @@ index 8026e8ca528071bf80fecb5e96370d1d2ae799db..1466ceb27f7b18a90afc05a1d60c7b42
      public static BlockPos lastPhysicsProblem; // Spigot
 -    private org.spigotmc.TickLimiter entityLimiter;
 -    private org.spigotmc.TickLimiter tileLimiter;
-+    // End start - remove tick limiter
++    // Cave start - remove tick limiter
 +    // private org.spigotmc.TickLimiter entityLimiter;
 +    // private org.spigotmc.TickLimiter tileLimiter;
-+    // End end
++    // Cave end
      private int tileTickPosition;
      public final Map<Explosion.CacheKey, Float> explosionDensityCache = new HashMap<>(); // Paper - Optimize explosions
      public java.util.ArrayDeque<net.minecraft.world.level.block.RedstoneTorchBlock.Toggle> redstoneUpdateInfos; // Paper - Move from Map in BlockRedstoneTorch to here
@@ -31,10 +31,10 @@ index 8026e8ca528071bf80fecb5e96370d1d2ae799db..1466ceb27f7b18a90afc05a1d60c7b42
          this.keepSpawnInMemory = this.paperConfig.keepSpawnInMemory; // Paper
 -        this.entityLimiter = new org.spigotmc.TickLimiter(spigotConfig.entityMaxTickTime);
 -        this.tileLimiter = new org.spigotmc.TickLimiter(spigotConfig.tileMaxTickTime);
-+        // End start - remove tick limiter
++        // Cave start - remove tick limiter
 +        // this.entityLimiter = new org.spigotmc.TickLimiter(spigotConfig.entityMaxTickTime);
 +        // this.tileLimiter = new org.spigotmc.TickLimiter(spigotConfig.tileMaxTickTime);
-+        // End end
++        // Cave end
          this.chunkPacketBlockController = this.paperConfig.antiXray ? new com.destroystokyo.paper.antixray.ChunkPacketBlockControllerAntiXray(this, executor) : com.destroystokyo.paper.antixray.ChunkPacketBlockController.NO_OPERATION_INSTANCE; // Paper - Anti-Xray
          this.entitySliceManager = new io.papermc.paper.world.EntitySliceManager((ServerLevel)this); // Paper
      }
@@ -46,7 +46,7 @@ index 31a447e6e156b7b244b2ac69a9c03c09c7ed388c..f8dfe258b831864ef3c52d86885ed965
          this.hangingTickFrequency = this.getInt( "hanging-tick-frequency", 100 );
      }
  
-+    // End start - remove tick limiter
++    // Cave start - remove tick limiter
 +    /*
      public int tileMaxTickTime;
      public int entityMaxTickTime;
@@ -56,7 +56,7 @@ index 31a447e6e156b7b244b2ac69a9c03c09c7ed388c..f8dfe258b831864ef3c52d86885ed965
          this.log("Tile Max Tick Time: " + this.tileMaxTickTime + "ms Entity max Tick Time: " + this.entityMaxTickTime + "ms");
      }
 +    */
-+    // End end
++    // Cave end
  
      public int thunderChance;
      private void thunderChance()

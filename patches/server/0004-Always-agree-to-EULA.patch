@@ -13,7 +13,7 @@ index df44790b1c342d0a6ff794bea86319fa7498cbae..c8b005075d2156622b00eeb93570f0d6
      public Eula(Path eulaFile) {
          this.file = eulaFile;
 -        this.agreed = SharedConstants.IS_RUNNING_IN_IDE || this.readFile();
-+        this.agreed = true; // End - yes we are agreed to the EULA
++        this.agreed = true; // Cave - yes we are agreed to the EULA
      }
  
      private boolean readFile() {

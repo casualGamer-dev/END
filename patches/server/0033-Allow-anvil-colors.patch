@@ -6,11 +6,11 @@ Subject: [PATCH] Allow anvil colors
 Original code by PurpurMC, licensed under MIT License
 You can find the original code on https://github.com/PurpurMC/Purpur
 
-diff --git a/src/main/java/me/minhh2792/pearl/PearlConfig.java b/src/main/java/me/minhh2792/pearl/PearlConfig.java
+diff --git a/src/main/java/me/minhh2792/pearl/CaveConfig.java b/src/main/java/me/minhh2792/pearl/CaveConfig.java
 index ab7fb90e987c26fd469ab411899d0af4bd241426..10e02477a3a4de8aa67329ba1dd37efcf389bb54 100644
---- a/src/main/java/me/minhh2792/pearl/PearlConfig.java
-+++ b/src/main/java/me/minhh2792/pearl/PearlConfig.java
-@@ -182,4 +182,9 @@ public class PearlConfig {
+--- a/src/main/java/me/minhh2792/pearl/CaveConfig.java
++++ b/src/main/java/me/minhh2792/pearl/CaveConfig.java
+@@ -182,4 +182,9 @@ public class CaveConfig {
  		signRightClickEdit = getBoolean("blocks.sign.right-click-edit", signRightClickEdit);
  		signAllowColors = getBoolean("blocks.sign.allow-colors", signAllowColors);
  	}
@@ -40,7 +40,7 @@ index ec89526f1eabef4681fed57b74fc1bef5be4c0c1..0e7ab70f17df0656b49936c070aac680
                  b1 = 1;
                  i += b1;
 +                // Purpur start
-+                if (player != null && me.minhh2792.pearl.PearlConfig.anvilAllowColors && player.getBukkitEntity().hasPermission("purpur.anvil.color")) {
++                if (player != null && me.toivi.cavecraft.CaveConfig.anvilAllowColors && player.getBukkitEntity().hasPermission("purpur.anvil.color")) {
 +                    final net.kyori.adventure.text.Component renameTextComponent;
 +                    if (itemName.startsWith("&r") && player.getBukkitEntity().hasPermission("purpur.anvil.remove_italics")) {
 +                        renameTextComponent = PaperAdventure.LEGACY_AMPERSAND.deserialize(itemName.substring(2)).decoration(TextDecoration.ITALIC, false);

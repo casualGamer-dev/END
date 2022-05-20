@@ -6,11 +6,11 @@ Subject: [PATCH] Signs editable on right click
 Original code by PurpurMC, licensed under MIT License
 You can find the original code on https://github.com/PurpurMC/Purpur
 
-diff --git a/src/main/java/me/minhh2792/pearl/PearlConfig.java b/src/main/java/me/minhh2792/pearl/PearlConfig.java
+diff --git a/src/main/java/me/minhh2792/pearl/CaveConfig.java b/src/main/java/me/minhh2792/pearl/CaveConfig.java
 index d80e6732b1c65dffc49fc4c81b5c076af896e414..ec17198a782285027b913299d03e3b72f8b6c522 100644
---- a/src/main/java/me/minhh2792/pearl/PearlConfig.java
-+++ b/src/main/java/me/minhh2792/pearl/PearlConfig.java
-@@ -175,4 +175,9 @@ public class PearlConfig {
+--- a/src/main/java/me/minhh2792/pearl/CaveConfig.java
++++ b/src/main/java/me/minhh2792/pearl/CaveConfig.java
+@@ -175,4 +175,9 @@ public class CaveConfig {
  	private static void tpsCatchup() {
  		tpsCatchup = getBoolean("misc.tps-catchup", tpsCatchup);
  	}
@@ -37,7 +37,7 @@ index ed3d78494735ceda14ad0ea23adeadc374f3b35e..3b4582baaa7de77a505e838b37766b99
                      }
  
 +                    // Purpur start - right click to open sign editor
-+                    if (me.minhh2792.pearl.PearlConfig.signRightClickEdit && itemStack.getItem() instanceof SignItem &&
++                    if (me.toivi.cavecraft.CaveConfig.signRightClickEdit && itemStack.getItem() instanceof SignItem &&
 +                        !player.isCrouching() && player.getAbilities().mayBuild &&
 +                        player.getBukkitEntity().hasPermission("purpur.sign.edit")) {
 +                        signBlockEntity.setEditable(true);
