@@ -6,10 +6,10 @@ Subject: [PATCH] Barrels and enderchests 6 rows
 Original code by PurpurMC, licensed under MIT License
 You can find the original code on https://github.com/PurpurMC/Purpur
 
-diff --git a/src/main/java/me/minhh2792/pearl/CaveConfig.java b/src/main/java/me/minhh2792/pearl/CaveConfig.java
+diff --git a/src/main/java/me/minhh2792/cave/CaveConfig.java b/src/main/java/me/minhh2792/cave/CaveConfig.java
 index 10e02477a3a4de8aa67329ba1dd37efcf389bb54..13d5fe7411a709b33dde8ff9a8f6e7006f92708a 100644
---- a/src/main/java/me/minhh2792/pearl/CaveConfig.java
-+++ b/src/main/java/me/minhh2792/pearl/CaveConfig.java
+--- a/src/main/java/me/minhh2792/cave/CaveConfig.java
++++ b/src/main/java/me/minhh2792/cave/CaveConfig.java
 @@ -1,5 +1,6 @@
  package me.toivi.cavecraft;
  

@@ -13,7 +13,7 @@ index 9521971e9e597834e785b36d1657064dc1621b9b..4a973de1682460d0086e2bda3329eed2
  
  dependencies {
 -    implementation(project(":pufferfish-api")) // Pufferfish // Paper
-+    implementation(project(":pearl-api")) // Cave // Pufferfish // Paper
++    implementation(project(":cave-api")) // Cave // Pufferfish // Paper
      // Pufferfish start
      implementation("io.papermc.paper:paper-mojangapi:1.18.2-R0.1-SNAPSHOT") {
          exclude("io.papermc.paper", "paper-api")
@@ -44,7 +44,7 @@ index f2fe6ea3719ff8b2913b7a3a939d7a5b75cb8b28..3666c57d11209baf61a0f03c66b71f30
                  metrics.addCustomChart(new Metrics.SingleLineChart("players", () -> Bukkit.getOnlinePlayers().size()));
                  metrics.addCustomChart(new Metrics.SimplePie("online_mode", () -> Bukkit.getOnlineMode() ? "online" : "offline"));
 -                metrics.addCustomChart(new Metrics.SimplePie("pufferfish_version", () -> (Metrics.class.getPackage().getImplementationVersion() != null) ? Metrics.class.getPackage().getImplementationVersion() : "unknown"));
-+                metrics.addCustomChart(new Metrics.SimplePie("pearl_version", () -> (Metrics.class.getPackage().getImplementationVersion() != null) ? Metrics.class.getPackage().getImplementationVersion() : "unknown"));
++                metrics.addCustomChart(new Metrics.SimplePie("cave_version", () -> (Metrics.class.getPackage().getImplementationVersion() != null) ? Metrics.class.getPackage().getImplementationVersion() : "unknown"));
  
                  metrics.addCustomChart(new Metrics.DrilldownPie("java_version", () -> {
                      Map<String, Map<String, Integer>> map = new HashMap<>();
@@ -61,11 +61,11 @@ index e0b1f0671d16ddddcb6725acd25a1d1d69e42701..b2b1835a5646310fdc0aa73da0c4741e
                  .variable(LineReader.HISTORY_FILE, java.nio.file.Paths.get(".console_history"))
                  .completer(new ConsoleCommandCompleter(this.server))
                  .option(LineReader.Option.COMPLETE_IN_WORD, true);
-diff --git a/src/main/java/me/minhh2792/pearl/CaveVersionFetcher.java b/src/main/java/me/minhh2792/pearl/CaveVersionFetcher.java
+diff --git a/src/main/java/me/minhh2792/cave/CaveVersionFetcher.java b/src/main/java/me/minhh2792/cave/CaveVersionFetcher.java
 new file mode 100644
 index 0000000000000000000000000000000000000000..da88a794ffabc78209aad1b0d91cf5ba025f8d14
 --- /dev/null
-+++ b/src/main/java/me/minhh2792/pearl/CaveVersionFetcher.java
++++ b/src/main/java/me/minhh2792/cave/CaveVersionFetcher.java
 @@ -0,0 +1,120 @@
 +package me.toivi.cavecraft;
 +
@@ -283,7 +283,7 @@ index 80553face9c70c2a3d897681e7761df85b22d464..911b9291927cf492cef2b0dc6bf37b5e
          String result = "Unknown-Version";
  
 -        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/gg.pufferfish.pufferfish/pufferfish-api/pom.properties"); // Pufferfish
-+        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/me.toivi.cavecraft/pearl-api/pom.properties"); // Pufferfish // Cave
++        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/me.toivi.cavecraft/cave-api/pom.properties"); // Pufferfish // Cave
          Properties properties = new Properties();
  
          if (stream != null) {

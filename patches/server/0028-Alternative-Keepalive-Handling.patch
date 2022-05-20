@@ -6,10 +6,10 @@ Subject: [PATCH] Alternative Keepalive Handling
 Original code by PurpurMC, licensed under MIT License
 You can find the original code on https://github.com/PurpurMC/Purpur
 
-diff --git a/src/main/java/me/minhh2792/pearl/CaveConfig.java b/src/main/java/me/minhh2792/pearl/CaveConfig.java
+diff --git a/src/main/java/me/minhh2792/cave/CaveConfig.java b/src/main/java/me/minhh2792/cave/CaveConfig.java
 index ca98bdd7df104bcb0e16438fe9f0ff98d3ae7631..cd480ada49fe3451c56e6c788388ddde705628a9 100644
---- a/src/main/java/me/minhh2792/pearl/CaveConfig.java
-+++ b/src/main/java/me/minhh2792/pearl/CaveConfig.java
+--- a/src/main/java/me/minhh2792/cave/CaveConfig.java
++++ b/src/main/java/me/minhh2792/cave/CaveConfig.java
 @@ -160,6 +160,9 @@ public class CaveConfig {
  	private static void mapUpdateInterval() {
  		mapUpdateInterval = getInt("item.map.update-interval", mapUpdateInterval);

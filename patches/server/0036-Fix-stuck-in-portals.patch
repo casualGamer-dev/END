@@ -6,10 +6,10 @@ Subject: [PATCH] Fix stuck in portals
 Original code by PurpurMC, licensed under MIT License
 You can find the original code on https://github.com/PurpurMC/Purpur
 
-diff --git a/src/main/java/me/minhh2792/pearl/CaveConfig.java b/src/main/java/me/minhh2792/pearl/CaveConfig.java
+diff --git a/src/main/java/me/minhh2792/cave/CaveConfig.java b/src/main/java/me/minhh2792/cave/CaveConfig.java
 index 13d5fe7411a709b33dde8ff9a8f6e7006f92708a..ebbf7b631309e80300f991426c50deef7f7a12aa 100644
---- a/src/main/java/me/minhh2792/pearl/CaveConfig.java
-+++ b/src/main/java/me/minhh2792/pearl/CaveConfig.java
+--- a/src/main/java/me/minhh2792/cave/CaveConfig.java
++++ b/src/main/java/me/minhh2792/cave/CaveConfig.java
 @@ -210,4 +210,9 @@ public class CaveConfig {
  		org.bukkit.event.inventory.InventoryType.ENDER_CHEST.setDefaultSize(enderChestSixRows ? 54 : 27);
  		enderChestPermissionRows = getBoolean("blocks.ender_chest.use-permissions-for-rows", enderChestPermissionRows);

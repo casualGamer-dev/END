@@ -6,10 +6,10 @@ Subject: [PATCH] Entities can use portals configuration
 Original code by PurpurMC, licensed under MIT License
 You can find the original code on https://github.com/PurpurMC/Purpur
 
-diff --git a/src/main/java/me/minhh2792/pearl/CaveConfig.java b/src/main/java/me/minhh2792/pearl/CaveConfig.java
+diff --git a/src/main/java/me/minhh2792/cave/CaveConfig.java b/src/main/java/me/minhh2792/cave/CaveConfig.java
 index ebbf7b631309e80300f991426c50deef7f7a12aa..da2f7c5f083248206b476230c30e7049e267dd9c 100644
---- a/src/main/java/me/minhh2792/pearl/CaveConfig.java
-+++ b/src/main/java/me/minhh2792/pearl/CaveConfig.java
+--- a/src/main/java/me/minhh2792/cave/CaveConfig.java
++++ b/src/main/java/me/minhh2792/cave/CaveConfig.java
 @@ -215,4 +215,9 @@ public class CaveConfig {
  	private static void playerFixStuckInPortal() {
  		playerFixStuckInPortal = getBoolean("gameplay-mechanics.player.fix-stuck-in-portal", false);

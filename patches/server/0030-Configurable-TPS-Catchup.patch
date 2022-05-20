@@ -6,10 +6,10 @@ Subject: [PATCH] Configurable TPS Catchup
 Original code by PurpurMC, licensed under MIT License
 You can find the original code on https://github.com/PurpurMC/Purpur
 
-diff --git a/src/main/java/me/minhh2792/pearl/CaveConfig.java b/src/main/java/me/minhh2792/pearl/CaveConfig.java
+diff --git a/src/main/java/me/minhh2792/cave/CaveConfig.java b/src/main/java/me/minhh2792/cave/CaveConfig.java
 index 332b3c39b3ffdc4009d9be86403c6a48c48620cd..d80e6732b1c65dffc49fc4c81b5c076af896e414 100644
---- a/src/main/java/me/minhh2792/pearl/CaveConfig.java
-+++ b/src/main/java/me/minhh2792/pearl/CaveConfig.java
+--- a/src/main/java/me/minhh2792/cave/CaveConfig.java
++++ b/src/main/java/me/minhh2792/cave/CaveConfig.java
 @@ -170,4 +170,9 @@ public class CaveConfig {
  	private static void serverModName() {
  		serverModName = getString("misc.server-mod-name", serverModName);

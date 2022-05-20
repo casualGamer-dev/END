@@ -24,7 +24,7 @@ Patches are licensed under GPL-3.0.
 
 All other files are licensed under MIT.
 
-[![bstats](https://bstats.org/signatures/server-implementation/pearl.svg)](https://bstats.org/plugin/server-implementation/Cave/14650)
+[![bstats](https://bstats.org/signatures/server-implementation/cave.svg)](https://bstats.org/plugin/server-implementation/Cave/14650)
 
 
-<a href="https://www.flaticon.com/free-icons/pearl" title="pearl icons">Cave icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/cave" title="cave icons">Cave icons created by Freepik - Flaticon</a>

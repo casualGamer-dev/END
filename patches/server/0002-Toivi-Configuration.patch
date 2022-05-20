@@ -14,15 +14,15 @@ index a5e4467382422df6cff2b9f61f44feabfe7084f3..bd0edc740a863c13003bc3ac7b81276c
              pair("paper", mapAsJSON(Bukkit.spigot().getPaperConfig(), null)), // Pufferfish
 -            pair("pufferfish", mapAsJSON(gg.pufferfish.pufferfish.PufferfishConfig.getConfigCopy(), null)) // Pufferfish
 +            pair("pufferfish", mapAsJSON(gg.pufferfish.pufferfish.PufferfishConfig.getConfigCopy(), null)), // Pufferfish
-+            pair("pearl", mapAsJSON(me.toivi.cavecraft.CaveConfig.getConfigCopy(), null)) // Cave
++            pair("cave", mapAsJSON(me.toivi.cavecraft.CaveConfig.getConfigCopy(), null)) // Cave
          ));
  
          new TimingsExport(listeners, parent, history).start();
-diff --git a/src/main/java/me/minhh2792/pearl/CaveConfig.java b/src/main/java/me/minhh2792/pearl/CaveConfig.java
+diff --git a/src/main/java/me/minhh2792/cave/CaveConfig.java b/src/main/java/me/minhh2792/cave/CaveConfig.java
 new file mode 100644
 index 0000000000000000000000000000000000000000..3befc3e286f46771407b40a20955de1eb7d19572
 --- /dev/null
-+++ b/src/main/java/me/minhh2792/pearl/CaveConfig.java
++++ b/src/main/java/me/minhh2792/cave/CaveConfig.java
 @@ -0,0 +1,160 @@
 +package me.toivi.cavecraft;
 +
@@ -69,7 +69,7 @@ index 0000000000000000000000000000000000000000..3befc3e286f46771407b40a20955de1e
 +	}
 +	
 +	public static void load() throws IOException {
-+		File configFile = new File("pearl.yml");
++		File configFile = new File("cave.yml");
 +		
 +		if (configFile.exists()) {
 +			try {

@@ -7,7 +7,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = "pearl"
+rootProject.name = "cave"
 for (name in listOf("Cave-API", "Cave-Server")) {
     val projName = name.toLowerCase(Locale.ENGLISH)
     include(projName)

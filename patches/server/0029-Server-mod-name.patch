@@ -4,10 +4,10 @@ Date: Tue, 3 May 2022 17:17:10 +0000
 Subject: [PATCH] Server mod name
 
 
-diff --git a/src/main/java/me/minhh2792/pearl/CaveConfig.java b/src/main/java/me/minhh2792/pearl/CaveConfig.java
+diff --git a/src/main/java/me/minhh2792/cave/CaveConfig.java b/src/main/java/me/minhh2792/cave/CaveConfig.java
 index cd480ada49fe3451c56e6c788388ddde705628a9..332b3c39b3ffdc4009d9be86403c6a48c48620cd 100644
---- a/src/main/java/me/minhh2792/pearl/CaveConfig.java
-+++ b/src/main/java/me/minhh2792/pearl/CaveConfig.java
+--- a/src/main/java/me/minhh2792/cave/CaveConfig.java
++++ b/src/main/java/me/minhh2792/cave/CaveConfig.java
 @@ -165,4 +165,9 @@ public class CaveConfig {
  	private static void useAlternativeKeepalive() {
  		useAlternativeKeepalive = getBoolean("use-alternative-keepalive", useAlternativeKeepalive);
