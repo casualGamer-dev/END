@@ -24,12 +24,12 @@ jobs:
           ./gradlew applyPatches --stacktrace
           ./gradlew createReobfPaperclipJar --stacktrace
           mkdir -p target
-          cp ./build/libs/pearl-paperclip-${{ steps.version.outputs.version }}-reobf.jar ./target/Pearl-${{ steps.version.outputs.mcversion }}.jar
+          cp ./build/libs/pearl-paperclip-${{ steps.version.outputs.version }}-reobf.jar ./target/Cave-${{ steps.version.outputs.mcversion }}.jar
       - name: Archive Paperclip
         uses: actions/upload-artifact@v2
         with:
-          name: "Pearl-${{ steps.version.outputs.mcversion }}"
-          path: ./target/Pearl-${{ steps.version.outputs.mcversion }}.jar
+          name: "Cave-${{ steps.version.outputs.mcversion }}"
+          path: ./target/Cave-${{ steps.version.outputs.mcversion }}.jar
       - name: Release
         if: github.ref_name == 'main'
         uses: "marvinpinto/action-automatic-releases@latest"
@@ -37,5 +37,5 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "${{ steps.version.outputs.mcversion }}"
           prerelease: false
-          title: "Pearl ${{ steps.version.outputs.mcversion }}"
-          files: ./target/Pearl-${{ steps.version.outputs.mcversion }}.jar
+          title: "Cave ${{ steps.version.outputs.mcversion }}"
+          files: ./target/Cave-${{ steps.version.outputs.mcversion }}.jar
